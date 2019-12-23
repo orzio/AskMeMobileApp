@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AskMeMobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AskMeMobileApp.Views.WordsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Test" Command="{Binding TestCommand}" />
+        <ToolbarItem Text="AddUnit" Clicked="AddUnit_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.BindingContext>
+        <vm:WordsPageViewModel />
+    </ContentPage.BindingContext>
+
+
+
+    <StackLayout>
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding Words}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding PolishMeaning}" Detail="{Binding EnglishMeaning}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</ContentPage>
