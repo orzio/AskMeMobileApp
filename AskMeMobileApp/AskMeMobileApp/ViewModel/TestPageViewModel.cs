@@ -9,6 +9,7 @@ namespace AskMeMobileApp.ViewModels
 {
     public class TestPageViewModel : PropertyChangedClass
     {
+
         public TestPageViewModel(List<Word> words)
         {
             _words = words;
@@ -111,12 +112,22 @@ namespace AskMeMobileApp.ViewModels
 
         public void LoadWord()
         {
+ 
             var random = new Random();
             int index;
             do
             {
                 index = random.Next(0, _testingList.Count);
+
+
+                if (_testingList[index].CorrectAnswers >= 3)
+                {
+                    FeedBack = "Test is finished! Thank You";
+                    return;
+                }
+
             } while (_testingList[index].CorrectAnswers >= 3);
+
 
             PickedWord = _testingList[index];
             PolishWord = PickedWord.PolishMeaning;

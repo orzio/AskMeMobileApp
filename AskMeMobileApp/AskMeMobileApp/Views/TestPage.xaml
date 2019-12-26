@@ -12,19 +12,18 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" >
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
             <Label
                    HorizontalOptions="CenterAndExpand"
                    Text="{Binding PolishWord}"
                    FontSize="Medium"/>
             <Entry Text="{Binding UserAnswer}"
-                   HorizontalOptions="CenterAndExpand"
                    FontSize="Medium"
                    />
             <StackLayout HorizontalOptions="CenterAndExpand">
                 <Label Text="{Binding FeedBack,Mode=TwoWay}" />
             </StackLayout>
-            <Button Text="Submit" Command="{Binding SubmitCommand}" HorizontalOptions="Center"/>
+            <Button x:Name="SubmitButton" Text="Submit" Command="{Binding SubmitCommand}" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 

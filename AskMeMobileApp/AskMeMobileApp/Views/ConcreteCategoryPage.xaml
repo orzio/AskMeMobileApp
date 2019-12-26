@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AskMeMobileApp.Views.ConcreteCategoryPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back" Clicked="Back_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding CategoryWordList}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding PolishMeaning}" Detail="{Binding EnglishMeaning}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </ContentPage.Content>
+</ContentPage>

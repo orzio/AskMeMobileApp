@@ -5,6 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AskMeMobileApp.Views.WordCategoryChooser">
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem Text="Back" Clicked="Back_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Choose Word Category!"

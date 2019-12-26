@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AskMeMobileApp.Models;
+using AskMeMobileApp.ViewModel;
+using AskMeMobileApp.ViewModels;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -12,9 +15,11 @@ namespace AskMeMobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WordsPage : ContentPage
     {
+        WordsPageViewModel wordsPageViewModel;
         public WordsPage()
         {
             InitializeComponent();
+            wordsPageViewModel = new WordsPageViewModel();
 
         }
 
@@ -28,8 +33,10 @@ namespace AskMeMobileApp.Views
         {
             if (e.Item == null)
                 return;
-
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            Console.WriteLine(e.Item);
+            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            await Navigation.PushModalAsync(new ConcreteCategoryPage(wordsPageViewModel.wordBook
+                          .Where(n => n.Unit == e.Item.ToString()).ToList()));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -39,5 +46,6 @@ namespace AskMeMobileApp.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewWordPage()));
         }
+
     }
 }
