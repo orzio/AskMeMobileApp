@@ -99,33 +99,30 @@ namespace AskMeMobileApp.ViewModels
                 FeedBack = "GOOD";
                 PickedWord.CorrectAnswers++;
                 PolishWord = "";
-                LoadWord();
             }
+
             else
             {
                 FeedBack = "WRONG!";
                 PolishWord = "";
-                LoadWord();
             }
+            if (PickedWord.CorrectAnswers >= 3)
+            {
+                FeedBack = "Test is finished! Thank You";
+                return;
+            }
+
+            LoadWord();
         }));
 
 
         public void LoadWord()
         {
- 
             var random = new Random();
             int index;
             do
             {
                 index = random.Next(0, _testingList.Count);
-
-
-                if (_testingList[index].CorrectAnswers >= 3)
-                {
-                    FeedBack = "Test is finished! Thank You";
-                    return;
-                }
-
             } while (_testingList[index].CorrectAnswers >= 3);
 
 
